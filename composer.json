@@ -3,6 +3,7 @@
     "license": "Apache-2.0",
     "require": {
         "php": ">=8.2",
+        "laminas/laminas-escaper": "^2.12",
         "spatie/php-cloneable": "^1.0"
     },
     "require-dev": {

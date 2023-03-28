@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BuzzingPixel\Templating;
 
+use Laminas\Escaper\Escaper;
 use RuntimeException;
 
 use function array_merge;
@@ -18,6 +19,40 @@ use const EXTR_SKIP;
 
 class TemplateEngine
 {
+    public function __construct(private readonly Escaper $escaper)
+    {
+    }
+
+    public function html(string $raw): string
+    {
+        return $this->escaper->escapeHtml($raw);
+    }
+
+    public function css(string $raw): string
+    {
+        return $this->escaper->escapeCss($raw);
+    }
+
+    public function js(string $raw): string
+    {
+        return $this->escaper->escapeJs($raw);
+    }
+
+    public function url(string $raw): string
+    {
+        return $this->escaper->escapeUrl($raw);
+    }
+
+    public function attr(string $raw): string
+    {
+        return $this->escaper->escapeHtmlAttr($raw);
+    }
+
+    private function createNewInstance(): self
+    {
+        return new self($this->escaper);
+    }
+
     private string $templatePath;
 
     public function templatePath(string $templatePath): self
@@ -103,7 +138,7 @@ class TemplateEngine
     /** @param mixed[] $vars */
     public function partial(string $templatePath, array $vars = []): string
     {
-        $partialEngine = (new self())
+        $partialEngine = $this->createNewInstance()
             ->templatePath($templatePath)
             ->vars($vars);
 
@@ -132,7 +167,7 @@ class TemplateEngine
             return $content;
         }
 
-        $extendEngine = (new self())
+        $extendEngine = $this->createNewInstance()
             ->templatePath($this->extends)
             ->vars($this->vars)
             ->sections(array_merge(
