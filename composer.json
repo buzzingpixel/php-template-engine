@@ -1,5 +1,5 @@
 {
-    "name": "buzzingpixel/php-templating",
+    "name": "buzzingpixel/php-template-engine",
     "license": "Apache-2.0",
     "require": {
         "php": ">=8.2",
