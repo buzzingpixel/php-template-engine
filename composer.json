@@ -1,0 +1,29 @@
+{
+    "name": "buzzingpixel/php-templating",
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=8.2",
+        "spatie/php-cloneable": "^1.0"
+    },
+    "require-dev": {
+        "buzzingpixel/symfony-var-dumper-decorator": "^1.0",
+        "doctrine/coding-standard": "^11.0.0",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-deprecation-rules": "^1.1",
+        "phpstan/phpstan-strict-rules": "^1.5",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/var-dumper": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "BuzzingPixel\\Templating\\": "src"
+        }
+    },
+    "config": {
+        "bin-compat": "full",
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
