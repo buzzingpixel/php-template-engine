@@ -26,7 +26,7 @@ $templateEngine->templatePath('/path/to/template.phtml');
 
 (note that `pthml` is just a convention. The TemplateEngine doesn't care what the extension is)
 
-Optionally you can add variables in one go:
+Variables are optional. If you have any to set, you can add them in one go:
 
 ```php
 $templateEngine->vars([
@@ -41,7 +41,7 @@ $templateEngine->vars([
 $templateEngine->addVar('foo', 'bar')->addVar('baz', 'foo');
 ```
 
-And when you're ready, call `render()` on the `TemplateEngine` instance, and your template will be rendered. Here's a full example.
+And when you're ready, call `render()` on the `TemplateEngine` instance, and your template will be rendered and the content returned as a string. Here's a full example.
 
 
 ```php
@@ -86,7 +86,6 @@ Hello World!
 <?php
 assert($this instanceof \BuzzingPixel\Templating\TemplateEngine);
 assert(is_string($pageTitle));
-$this->extends(__DIR__ . '/layout.phtml');
 ?>
 <html>
 <head>
@@ -127,7 +126,6 @@ Hello World!
 <?php
 assert($this instanceof \BuzzingPixel\Templating\TemplateEngine);
 assert(is_string($pageTitle));
-$this->extends(__DIR__ . '/layout.phtml');
 ?>
 <html>
 <head>
